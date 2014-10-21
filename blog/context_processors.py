@@ -1,4 +1,4 @@
-from blog.models import Post, Tag
+from blog.models import Post, Tag, Ads
 
 
 def latest_post(request):
@@ -13,11 +13,13 @@ def sidebar(request):
         if not i in tags:
             tags.append(i)
 
-    posts = []
     month_list = Post.objects.dates('created', 'month')
-    # for month in month_list:
-    #     post = Post.objects.filter()
     return {
         'tags': tags,
         'months': month_list
+    }
+
+def random_ad(request):
+    return {
+        'ad': Ads.objects.filter(state=request.location['region']).order_by('?')[0]
     }

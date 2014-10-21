@@ -25,3 +25,11 @@ class Post(models.Model):
 
     def __unicode__(self):
         return u"{}".format(self.title)
+
+class Ads(models.Model):
+    image = models.ImageField(upload_to='ad_image', blank=True, null=True)
+    url = models.URLField()
+    state = models.CharField(max_length=40)
+
+    def __unicode__(self):
+        return u"{}, {}".format(self.state, self.url)

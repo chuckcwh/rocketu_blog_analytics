@@ -4,8 +4,6 @@ from blog.models import Post
 
 def home(request):
     return render(request, 'home.html', {
-        # 'latest_post': Post.objects.latest('created'),
-        # 'latest_post': Post.objects.order_by('-created')[0]
     })
 
 

@@ -50,6 +50,7 @@ TEMPLATE_CONTEXT_PROCESSORS = {
     'django.contrib.messages.context_processors.messages',
     'blog.context_processors.latest_post',
     'blog.context_processors.sidebar',
+    'blog.context_processors.random_ad',
     'analytics.context_processors.location',
 }
 
@@ -93,10 +94,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, "static", *MEDIA_URL.strip("/").split("/"))
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 try:

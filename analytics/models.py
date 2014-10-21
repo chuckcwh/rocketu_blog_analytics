@@ -30,3 +30,4 @@ class View(models.Model):
     def __unicode__(self):
         return u"{} by {} @ {}".format(self.ip_address, self.location, self.timestamp)
 
+    # def count(self):

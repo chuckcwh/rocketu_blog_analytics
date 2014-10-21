@@ -21,16 +21,17 @@ class LocationMiddleware(object):
 
 class PageViewMiddleware(object):
     def process_request(self, request):
-        obj_page, created = Page.objects.get_or_create(url=request.META['PATH_INFO'])
-        obj_loc, created = Location.objects.get_or_create(
-            city=request.location['city'],
-            country=request.location['country'],
-            region=request.location['region'],
-        )
-        View.objects.create(
-            page=obj_page,
-            location=obj_loc,
-            latitude=request.location['latitude'],
-            longitude=request.location['longitude'],
-            ip_address=request.location['ip']
+        if not request.META['PATH_INFO'].split("/")[1] in ["admin", "analytics", "media"]:
+            obj_page, created = Page.objects.get_or_create(url=request.META['PATH_INFO'])
+            obj_loc, created = Location.objects.get_or_create(
+                city=request.location['city'],
+                country=request.location['country'],
+                region=request.location['region'],
+            )
+            View.objects.create(
+                page=obj_page,
+                location=obj_loc,
+                latitude=request.location['latitude'],
+                longitude=request.location['longitude'],
+                ip_address=request.location['ip']
         )

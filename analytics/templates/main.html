@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Page Analytics</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" align="center">
+            <h1>Page Analytics</h1>
+            <table class='table table-hover table-striped'>
+                <thead>
+                    <tr align='center'>
+                        <td><b>Page URL</b></td>
+                        <td><b>Visit Count</b></td>
+                    </tr>
+                </thead>
+                <tbody id='checkin_show'>
+                    {% for page in pages %}
+                        <tr>
+                            <td><a href="{% url 'page_map' page.pk %}">{{ page.url }}</a></td>
+                            <td>{{ page.views.count }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
