@@ -26,3 +26,4 @@ def random_ad(request):
         }
     else:
         return {}
+
