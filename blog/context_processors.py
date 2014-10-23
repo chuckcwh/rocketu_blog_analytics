@@ -20,6 +20,9 @@ def sidebar(request):
     }
 
 def random_ad(request):
-    return {
-        'ad': Ads.objects.filter(state=request.location['region']).order_by('?')[0]
-    }
+    if Ads.objects.filter(state=request.location['region']):
+        return {
+            'ad': Ads.objects.filter(state=request.location['region']).order_by('?')[0]
+        }
+    else:
+        return {}
