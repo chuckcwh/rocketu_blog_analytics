@@ -56,6 +56,8 @@ TEMPLATE_CONTEXT_PROCESSORS = {
 }
 
 MIDDLEWARE_CLASSES = (
+    'appenlight_client.django_middleware.AppenlightMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -71,6 +73,8 @@ ROOT_URLCONF = 'rocketu_blog_analytics.urls'
 
 WSGI_APPLICATION = 'rocketu_blog_analytics.wsgi.application'
 
+import appenlight_client.client as e_client
+APPENLIGHT = e_client.get_config({'appenlight.api_key':'1b2f551c338a482fb1c8c4e79b8ff267'})
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
