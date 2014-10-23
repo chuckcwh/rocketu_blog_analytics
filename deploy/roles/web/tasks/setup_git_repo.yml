@@ -5,4 +5,4 @@
   tags: git
 
 - name: Ensure user owns our project
-  file: state=directory path={{ project_path }} owner: ubuntu
+  file: state=directory path={{ project_path }} owner=ubuntu

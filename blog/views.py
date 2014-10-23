@@ -25,3 +25,9 @@ def tag_posts(request, pk):
     return render(request, 'tag_posts.html', {
         'posts': Post.objects.filter(tags=pk)
     })
+
+def error(request):
+    my_variable = '!'
+    my_list = ['testing', 'a', 'list', 'out']
+    my_list = ["{}{}".format(list_item, my_variable) for list_item in my_list]
+    raise NotImplementedError("Hell no! This doesn't exist.")

@@ -15,4 +15,7 @@
             dest=/etc/supervisor/conf.d/{{ project_name }}.conf
 
 - name: Restart Supervisor
-  supervisorctl: name= state=restarted
+  supervisorctl: name={{ project_name }} state=restarted
+
+- name: Restart Supervisor Service
+  service: name=supervisor state=restarted
